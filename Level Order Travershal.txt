@@ -1,0 +1,36 @@
+Level Order Travershal
+
+public ArrayList<Integer> serialize(Node root) {
+        Stack<Node> Q = new LinkedList<>();
+        Q.add(root);
+        ArrayList<Integer> arr= new ArrayList<Integer>();
+        
+        while(!Q.isEmpty()){
+            int sz=Q.size();
+            for(int i=0;i<sz;i++){
+                Node cur= Q.poll();
+                arr.add(cur.data);
+                if(Q.left != null) Q.add(Q.left);
+                if(Q.right != null) Q.add(Q.right);
+            }
+        }
+        return arr;
+    }
+
+Serialized 
+// Sample Tree:
+//         1
+//        / \
+//       2   3
+//      / \   \
+//     4   5   6
+//    /
+//   7
+
+Node root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
+root.right.right = new Node(6);
+root.left.left.left = new Node(7);
